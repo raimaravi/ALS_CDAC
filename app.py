@@ -57,6 +57,22 @@ def alldata():
     allals = ALS.query.all()
     return render_template("alldata.html", allals=allals)
 
+@app.route("/srch/<srchbx>", methods=['GET', 'POST'])
+def srch(srchbx):
+    if request.method=="POST":
+        s=request.form['srchbx']
+        fname_srch = ALS.query.filter_by(fname=s).first()
+        lname_srch = ALS.query.filter_by(lname=s).first()
+        print(fname_srch)
+        print(lname_srch)
+        # print(ALS.query.filter_by(fname=s).count())
+        # print(ALS.query.filter_by(lname=s).count())
+        # # if ALS.query.filter_by(fname=s).count()>0:
+        #     return redirect("/alldata", allals=fname_srch)
+        # elif ALS.query.filter_by(lname=s).count()>0:
+        #     return redirect("/alldata", allals=lname_srch)
+        
+
 # this is used to delete record
 @app.route("/delete/<int:sno>")
 def delete(sno):
@@ -75,9 +91,9 @@ def view(sno):
     rnn.extract_mfcc(dals.file_name)
     res = rnn.predict()
     if res==0:
-        dals.result="Control"
+        dals.result="Don't worry you are Not suffering from ALS"
     else:
-        dals.result="Pathology"
+        dals.result="You may be suffering from ALS, consult a doctor fast !!!!"
     return render_template("view.html", dals=dals)
 
 
