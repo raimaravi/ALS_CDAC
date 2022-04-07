@@ -17,6 +17,7 @@
                 <th scope="col">S.No.</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
+                <th scope="col">Mobile No.</th>
                 <th scope="col">Date</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -34,11 +35,11 @@
                 <th scope="row">{{loop.index}}</th>
                 <td>{{als.fname}}</td>
                 <td>{{als.lname}}</td>
+                <td>{{als.mob}}</td>
                 <td>{{als.date_created}}</td>
                 <td>
                     <a href="/View/{{als.sno}}" type="button" class="btn btn-outline-secondary btn-sm mx-1">View Report</a>
-                    <a href="/update/{{als.sno}}" type="button" class="btn btn-outline-secondary btn-sm mx-1">Update</a>
-                    <a href="/delete/{{als.sno}}" type="button" class="btn btn-outline-secondary btn-sm mx-1">Delete</a>
+                    <a href="/delete/{{als.sno}}" type="button" class="btn btn-outline-secondary btn-sm mx-1">Delete Report</a>
                 </td>
             </tr>
         </tbody>

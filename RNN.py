@@ -1,3 +1,4 @@
+
 import tensorflow as tf
 from tensorflow.python.ops import rnn, rnn_cell
 import pickle
@@ -7,9 +8,9 @@ import numpy as np
 import pandas as pd
 import os
 import glob
-import librosa
-
+import tensorflow as tf
 tf.compat.v1.reset_default_graph()
+import librosa
 tf.compat.v1.disable_eager_execution()
 
 class RNN:
@@ -29,7 +30,6 @@ class RNN:
         self.n_features = 100
         self.rnn_sizes = [128, 128]
         self.model_name = 'mfcc_cross'
-        self.load_model_name = 'mfcc_cross'
         self.load = False
 
         self.export_dir = './networks/'
@@ -38,7 +38,7 @@ class RNN:
         self.n_classes=2
 
 
-    def extract_mfcc(self, fl, train=True):
+    def extract_mfcc(self, fl, train=False):
         """
         Split the audio files in segments of 2 seconds, and compute the mfcc
         features for all of the
@@ -158,14 +158,12 @@ class RNN:
             keep_prob = tf.compat.v1.placeholder("float", name='keep_prob')
 
             prediction = self.build_rnn(x, keep_prob)
-
             with tf.compat.v1.Session() as session:
                 saver = tf.compat.v1.train.Saver()
                 saver.restore(session, self.export_dir + self.model_name + '{}'.format(j))
                 unique = pd.unique(df_mfcc.fname)
                 for i in range(len(pd.unique(df_mfcc.fname))):
                     idxs = df_mfcc.fname[df_mfcc.fname == unique[i]].index.tolist()
-
                     batch = X[idxs, :, :]
                     if batch.sum() == 0:
                         batch = np.ones_like(batch)
@@ -179,7 +177,7 @@ class RNN:
         predictions = predictions.mean(axis=0)
         for i in range(len(pd.unique(df_mfcc.fname))):
             top3_labels = self.top_3(predictions[i, :], return_string=False)
-            print(top3_labels[0])
+            return top3_labels[0]
 
     def top_3(self, predictions, return_string=True):
         top_labels = np.argsort(predictions)
@@ -191,9 +189,8 @@ class RNN:
         return top3_labels
 
 
-# if __name__ == '__main__':
-#     rnn = RNN()
-#     # rnn.extract_mfcc(train=False)
-#     # rnn.train(verified=False)
-#     # rnn.extract_mfcc(train=False)
-#     rnn.predict()
+if __name__ == '__main__':
+    rnn = RNN()
+    rnn.extract_mfcc("068.wav", train=False)
+    res=rnn.predict()
+    print(res)
