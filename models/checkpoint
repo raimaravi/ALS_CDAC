@@ -1,0 +1,2 @@
+model_checkpoint_path: "mfcc_cross4"
+all_model_checkpoint_paths: "mfcc_cross4"

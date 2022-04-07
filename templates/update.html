@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+  Update
+{% endblock title %}
+{% block body %}
+
+
+<div class="container my-4">
+    <h2>Update Patient details</h2>
+
+    <form action="/update/{{dals.sno}}" method="POST">
+        <div class="input-group my-3 mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" id="fname" name="fname" value="{{dals.fname}}">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Last Name</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" id="lname" name="lname" value="{{dals.lname}}">
+        </div>
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                aria-label="Upload" accept="audio/*" name="file">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-outline-secondary mb-3">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock body %}
