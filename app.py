@@ -89,6 +89,7 @@ def view(sno):
     dals=ALS.query.filter_by(sno=sno).first()
     rnn=RNN()
     rnn.extract_mfcc(dals.file_name)
+    rnn.save_graph(dals.file_name)
     res = rnn.predict()
     if res==0:
         dals.result="Don't worry you are Not suffering from ALS"
@@ -98,4 +99,4 @@ def view(sno):
 
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=5000)

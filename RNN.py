@@ -11,6 +11,8 @@ import glob
 import tensorflow as tf
 tf.compat.v1.reset_default_graph()
 import librosa
+import matplotlib.pyplot as plt
+import librosa.display
 tf.compat.v1.disable_eager_execution()
 
 class RNN:
@@ -94,6 +96,25 @@ class RNN:
         df_mfcc.to_csv(self.import_dir + 'mfcc_test.csv')
         with open('./input/mfcc_test.p', 'wb') as fp:
             pickle.dump(np.array(mfccs), fp)
+
+    def save_graph(self, fl):
+      path="audio_test/"
+      for fn in glob.glob(os.path.join(self.import_dir + path, fl)):
+            fname = fn.split('/')[-1]
+            plt.figure(figsize=(25,25))
+
+            ado, s_rate = librosa.load(fn, res_type='kaiser_fast')
+            S, phase = librosa.magphase(librosa.stft(ado))
+            
+            librosa.display.waveshow(ado, sr=s_rate)
+            plt.savefig("./graphs/graph1.png")
+
+            rolloff = librosa.feature.melspectrogram(y=ado, sr=s_rate)
+
+            librosa.display.specshow(librosa.amplitude_to_db(S, ref=np.max),
+                                    y_axis='log', x_axis='time')
+            plt.title('mel spectrogram')
+            plt.savefig("./graphs/graph2.png")
 
     def build_rnn(self, x, keep_prob):
         """
