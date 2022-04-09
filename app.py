@@ -55,23 +55,7 @@ def alldata():
         db.session.commit()
         # print(request.form['inputGroupFile04'])
     allals = ALS.query.all()
-    return render_template("alldata.html", allals=allals)
-
-@app.route("/srch/<srchbx>", methods=['GET', 'POST'])
-def srch(srchbx):
-    if request.method=="POST":
-        s=request.form['srchbx']
-        fname_srch = ALS.query.filter_by(fname=s).first()
-        lname_srch = ALS.query.filter_by(lname=s).first()
-        print(fname_srch)
-        print(lname_srch)
-        # print(ALS.query.filter_by(fname=s).count())
-        # print(ALS.query.filter_by(lname=s).count())
-        # # if ALS.query.filter_by(fname=s).count()>0:
-        #     return redirect("/alldata", allals=fname_srch)
-        # elif ALS.query.filter_by(lname=s).count()>0:
-        #     return redirect("/alldata", allals=lname_srch)
-        
+    return render_template("alldata.html", allals=allals)       
 
 # this is used to delete record
 @app.route("/delete/<int:sno>")
