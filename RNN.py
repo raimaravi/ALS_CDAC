@@ -107,14 +107,14 @@ class RNN:
             S, phase = librosa.magphase(librosa.stft(ado))
             
             librosa.display.waveshow(ado, sr=s_rate)
-            plt.savefig("./graphs/graph1.png")
+            plt.savefig("./static/graphs/graph1.png")
 
             rolloff = librosa.feature.melspectrogram(y=ado, sr=s_rate)
 
             librosa.display.specshow(librosa.amplitude_to_db(S, ref=np.max),
                                     y_axis='log', x_axis='time')
             plt.title('mel spectrogram')
-            plt.savefig("./graphs/graph2.png")
+            plt.savefig("./static/graphs/graph2.png")
 
     def build_rnn(self, x, keep_prob):
         """

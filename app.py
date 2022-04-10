@@ -16,25 +16,28 @@ db=SQLAlchemy(app)
 
 class ALS(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
-    fname=db.Column(db.String(50), nullable=False)
-    lname=db.Column(db.String(50), nullable=False)
+    name=db.Column(db.String(50), nullable=False)
     mob=db.Column(db.String(50), nullable=False)
     file_name=db.Column(db.String(50))
     result=db.Column(db.String(50))
     date_created=db.Column(db.DateTime, default=datetime.now())
     
     def __repr__(self) -> str:
-        return f"{self.sno} - {self.fname} - {self.lname} - {self.mob} - {self.date_created}"
+        return f"{self.sno} - {self.name} - {self.mob} - {self.date_created}"
 
 # this is the home page
 @app.route("/")
 def home():
-    return render_template("main.html")
+    return render_template("home.html")
+
+@app.route("/home")
+def home2():
+    return render_template("home.html")
 
 # new record in creted from this page
-@app.route("/new")
-def new():
-    return render_template("new.html")
+@app.route("/check")
+def check():
+    return render_template("check.html")
 
 # this is the about page
 @app.route("/about")
@@ -45,17 +48,15 @@ def about():
 @app.route("/alldata", methods=['GET', 'POST'])
 def alldata():
     if request.method=="POST":
-        fname=request.form['fname']
-        lname=request.form['lname']
+        name=request.form['name']
         mob=request.form['mob']
-        f=request.files['file']
+        f=request.files['afile']
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
-        als=ALS(fname=fname, lname=lname, mob=mob, file_name=f.filename)
+        als=ALS(name=name, mob=mob, file_name=f.filename)
         db.session.add(als)
         db.session.commit()
-        # print(request.form['inputGroupFile04'])
     allals = ALS.query.all()
-    return render_template("alldata.html", allals=allals)       
+    return render_template("alldata.html", allals=allals)    
 
 # this is used to delete record
 @app.route("/delete/<int:sno>")
@@ -78,8 +79,8 @@ def view(sno):
     if res==0:
         dals.result="Don't worry you are Not suffering from ALS"
     else:
-        dals.result="You may be suffering from ALS, consult a doctor fast !!!!"
-    return render_template("view.html", dals=dals)
+        dals.result="You are detected with ALS. Please visit doctor and start your treament."
+    return render_template("report.html", dals=dals)
 
 
 if __name__=="__main__":

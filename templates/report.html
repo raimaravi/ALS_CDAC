@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALS-CHECK</title>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <link rel="stylesheet" href="../static/css/styles.css">
+  
+</head>
+<body>
+  <div id="homepage">
+    <div class="homepageHero">
+      <!-- navbar starts here  -->
+      <nav class="nav-wrapper z-depth-0 blue darken-2">
+        <div class="container">
+          <a href="/" class="brand-logo white-text text-darken-2">ALS-CHECK</a>
+          <ul class="right blue darken-2">
+            <li class="blue darken-2">
+              <a href="/alldata" class="btn orange darken-2" style="font-weight: 600; text-transform: none;">View All Reports</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- navbar ends here -->
+  <div style="margin-top: 50px;" class="container">
+    <div class="card-panel">
+      <h4 class="blue-text text-darken-2">Your Report</h4>
+      <p><strong>Name: </strong>{{dals.name}}</p>
+      <p><strong>Phone: </strong>{{dals.mob}}</p>
+      <div class="row">
+        <div class="col m5">
+          <img height="500" width="500" src="../static/graphs/graph1.png" alt="">
+        </div>
+        <div class="col m3">
+          <img height="500" width="500" src="../static/graphs/graph2.png" alt="">
+        </div>
+      </div>
+      <h5><strong>Result: </strong>{{dals.result}}</h5>
+    </div>
+  </div>
+</body>
+</html>

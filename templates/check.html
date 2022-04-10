@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check for ALS</title>
+  <link rel="stylesheet" href="./styles.css" />
+
+   <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+  <!-- navbar starts here  -->
+  <nav class="nav-wrapper z-depth-0 blue darken-2">
+    <div class="container">
+      <a href="/home" class="brand-logo white-text text-darken-2">ALS-CHECK</a>
+      <ul class="right blue darken-2">
+        <li class="blue darken-2">
+          <a href="/alldata" class="btn orange darken-2" style="font-weight: 600; text-transform: none;">View All Reports</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- navbar ends here -->
+  <div class="container">
+    <!-- first name, last name, mobile number, file  -->
+    <div style="margin-top: 50px;" class="card-panel">
+      <h4 class="blue-text text-darken-3">Enter your details</h4>
+      <form action="/alldata" method="POST" enctype = "multipart/form-data">
+        <div class="input-field">
+          <label for="name" class="black-text" style="font-size: 16px; font-weight: 500;">Full Name *</label>
+          <input placeholder="Enter full name" type="text" id="name" name="name" required />
+        </div>
+        <div class="input-field">
+          <label for="mob" class="black-text" style="font-size: 16px; font-weight: 500;">Phone Number *</label>
+          <input placeholder="Enter phone number" type="text" id="mob" name="mob" required />
+        </div>
+        <!-- file field start here -->
+        <div class="file-field input-field">
+          <div class="z-depth-0">
+            <span style="font-size: 16px; font-weight: 500;">Upload Audio File *</span>
+            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                aria-label="Upload" accept="audio/*" name="afile">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+        <!-- file field ends here -->
+        <!-- info box -->
+        <div class="card-panel z-depth-0" style="background-color: #fff3cd; border: 1px solid #856404; border-radius: 8px;">
+          <p style="font-size: 16px; font-weight: 600; color:#856404">Name the audo file must be same as your mobile number, <em>".wav"</em> format and should be less than 10 seconds </p>
+        </div>
+        <button type="submit" class="btn-large orange darken-2 z-depth-0" style="font-weight: 600; text-transform: none; margin-top: 32px;">Submit Your Details</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

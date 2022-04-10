@@ -1,59 +1,93 @@
-{% extends 'base.html' %}
-{% block title %}
-  About
-{% endblock title %}
-{% block body %}
-<center>
-    <div class="container my-4">
-        <h3>
-            Amyotrophic lateral sclerosis <small class="text-muted">(ALS)</small>
-        </h3>
-</center>
-</div>
-<div class="container my-3">
-    <blockquote class="blockquote">
-        <p>Amyotrophic lateral sclerosis (ALS) is neurodegenerative
-            incurable disease, approximately 50% of patients with ALS
-            die within 30 months of symptom onset. There is no
-            biological marker for ALS and the diagnosis is made based
-            on constellation of clinical observations. On average, it takes
-            over a year to arrive at the diagnosis. Using an acoustic
-            analysis of voice and speech is a promising way to improve the
-            process of ALS detection and monitoring of disease progression. It becomes possible since bulbar motor
-            changes (i.e., difficulty with speech or swallowing) are the first symptoms
-            in approximately 30% of persons with ALS. Almost all
-            people with ALS display bulbar symptoms at later stages. It
-            is important that abnormal acoustic parameters of voice were
-            also demonstrated in ALS subjects with perceptually normal
-            vocal quality on sustained phonation.
-        </p>
-    </blockquote>
-</div>
-<div class="container my-2">
-    <blockquote class="blockquote">
-        <p>The need for development voice and speech diagnostic tools
-            has motivated recent work on elaboration of special acoustic
-            analysis methods. One important aspect of current research
-            related to neurological disease detection (such as Parkinson's
-            and ALS) is that they targeted to use smartphones and tablets
-            to record the voice using standard microphone in the different
-            home environments. Advancement in this direction can
-            lead to creation of easy to use self- and tele-monitoring and
-            disease detection means.
-        </p>
-    </blockquote>
-</div>
-<div class="container my-2">
-    <blockquote class="blockquote">
-        <p>So, What you need to do to check if you are suffering from ALS what you need to do is record your voice while speaking the vowel "A" 
-            in a consistent pitch for about 5 seconds and upload that file in ".WAV" format and the name of the file should be your mobile number.
-            For example if your mobile number is 1234512345 then the name of your audio file should be "1234512345.wav".
-        </p>
-    </blockquote>
-</div>
-<br>
-<div class="container">
-    <h5>For more information on ALS <a href="https://www.als.org/understanding-als/what-is-als">Click here.</a></h5>
-    
-</div>
-{% endblock body %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALS-CHECK</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="../static/css/styles.css">
+
+</head>
+
+<body>
+    <div id="homepage">
+        <div class="homepageHero">
+            <!-- navbar starts here  -->
+            <nav class="nav-wrapper z-depth-0 blue darken-2">
+                <div class="container">
+                    <a href="/" class="brand-logo white-text text-darken-2">ALS-CHECK</a>
+                    <ul class="right blue darken-2">
+                        <li class="blue darken-2">
+                            <a href="/alldata" class="btn orange darken-2"
+                                style="font-weight: 600; text-transform: none;">View All Reports</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- navbar ends here -->
+            <center>
+                <div class="container my-4">
+                    <h3 style="margin-top: 20px;">
+                        Amyotrophic lateral sclerosis <small class="text-muted">(ALS)</small>
+                    </h3>
+            </center>
+            <div class="container my-3">
+                <blockquote class="blockquote">
+                    <p style="font-size: 18px;">Amyotrophic lateral sclerosis (ALS) is neurodegenerative
+                        incurable disease, approximately 50% of patients with ALS
+                        die within 30 months of symptom onset. There is no
+                        biological marker for ALS and the diagnosis is made based
+                        on constellation of clinical observations. On average, it takes
+                        over a year to arrive at the diagnosis. Using an acoustic
+                        analysis of voice and speech is a promising way to improve the
+                        process of ALS detection and monitoring of disease progression. It becomes possible since bulbar
+                        motor
+                        changes (i.e., difficulty with speech or swallowing) are the first symptoms
+                        in approximately 30% of persons with ALS. Almost all
+                        people with ALS display bulbar symptoms at later stages. It
+                        is important that abnormal acoustic parameters of voice were
+                        also demonstrated in ALS subjects with perceptually normal
+                        vocal quality on sustained phonation.
+                    </p>
+                </blockquote>
+            </div>
+            <div class="container my-2">
+                <blockquote class="blockquote">
+                    <p style="font-size: 18px;">The need for development voice and speech diagnostic tools
+                        has motivated recent work on elaboration of special acoustic
+                        analysis methods. One important aspect of current research
+                        related to neurological disease detection (such as Parkinson's
+                        and ALS) is that they targeted to use smartphones and tablets
+                        to record the voice using standard microphone in the different
+                        home environments. Advancement in this direction can
+                        lead to creation of easy to use self- and tele-monitoring and
+                        disease detection means.
+                    </p>
+                </blockquote>
+            </div>
+            <div class="container my-2">
+                <blockquote class="blockquote">
+                    <p style="font-size: 18px;">So, What you need to do to check if you are suffering from ALS what you need to do is record your
+                        voice while speaking the vowel "A"
+                        in a consistent pitch for about 5 seconds and upload that file in ".WAV" format and the name of
+                        the file should be your mobile number.
+                        For example if your mobile number is 1234512345 then the name of your audio file should be
+                        "1234512345.wav".
+                    </p>
+                </blockquote>
+            </div>
+            <br>
+            <div class="container">
+                <h5>For more information on ALS <a href="https://www.als.org/understanding-als/what-is-als">Click
+                        here.</a></h5>
+
+            </div>
+
+</body>
+</html>

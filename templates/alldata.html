@@ -1,47 +1,65 @@
-{% extends 'base.html' %}
-{% block title %}
-  Record
-{% endblock title %}
-{% block body %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALS-REPORTS</title>
+  <link rel="stylesheet" href="./styles.css" />
 
-<div class="container">
-    <table class="table">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+  <!-- navbar starts here  -->
+  <nav class="nav-wrapper z-depth-0 blue darken-2">
+    <div class="container">
+      <a href="/home" class="brand-logo white-text text-darken-2">ALS-CHECK</a>
+      <ul class="right blue darken-2">
+        <li class="blue darken-2">
+          <a href="/alldata" class="btn orange darken-2" style="font-weight: 600; text-transform: none;">View All Reports</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- navbar ends here -->
+
+  <!-- all data table starts here -->
+    <div class="container">
+      <table class="striped">
         <thead>
-            <tr>
-                <th scope="col">S.No.</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Mobile No.</th>
-                <th scope="col">Date</th>
-                <th scope="col">Actions</th>
-            </tr>
+          <tr>
+            <th scope="col">S.No.</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Mobile No.</th>
+            <th scope="col">Date</th>
+            <th scope="col">Actions</th>
+          </tr>
         </thead>
-        {% if allals|length==0 %}
-        <div class="alert alert-secondary my-5" role="alert">
-            NO RECORD AVAILABLE TO SHOW
-        </div>
-
+        {% if allals|length == 0 %}
+          
         {% else %}
-        {% for als in allals %}
-
-        <tbody>
+          {% for als in allals %}
+          <tbody>
             <tr>
-                <th scope="row">{{loop.index}}</th>
-                <td>{{als.fname}}</td>
-                <td>{{als.lname}}</td>
-                <td>{{als.mob}}</td>
-                <td>{{als.date_created}}</td>
-                <td>
-                    <a href="/View/{{als.sno}}" type="button" class="btn btn-outline-secondary btn-sm mx-1">View Report</a>
-                    <a href="/delete/{{als.sno}}" type="button" class="btn btn-outline-secondary btn-sm mx-1">Delete Report</a>
-                </td>
-            </tr>
-        </tbody>
-        {% endfor %}
+              <th scope="row">{{loop.index}}</th>
+              <td>{{als.name}}</td>
+              <td>{{als.mob}}</td>
+              <td>{{als.date_created}}</td>
+              <td>
+                <a href="/View/{{als.sno}}" type="button" class="btn btn-outline-secondary btn-sm mx-1">View Report</a>
+                <a href="/delete/{{als.sno}}" type="button" class="btn btn-outline-secondary btn-sm mx-1">Delete Report</a>
+              </td>
+          </tr>
+          </tbody>
+          {% endfor %}
         {% endif %}
 
-    </table>
-</div>
+        
+      </table>
+    </div>
+  <!-- all data table ends here -->
 
-
-{% endblock body %}
+</body>
+</html>
